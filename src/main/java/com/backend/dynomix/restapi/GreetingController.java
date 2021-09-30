@@ -8,8 +8,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class GreetingController {
 
-    private static final String template =" Helllo";
+    private static final String template =" Hello";
 
+    @GetMapping("/login")
+    public Boolean loging(@RequestParam(value = "user") String user,@RequestParam(value = "pass") String pass){
+        Login log=new Login(user,pass);
+        return log.loginProcess();
+    }
 
     @GetMapping("/greet")
     public Greeting greeting(@RequestParam(value = "name",defaultValue = "World") String name){
